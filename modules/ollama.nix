@@ -36,7 +36,7 @@ in
       environment = {
         OLLAMA_HOST   = "${cfg.host}:${toString cfg.port}";
         OLLAMA_MODELS = "/var/lib/ollama/models";
-        OLLAMA_NUM_CTX = "16384",
+        OLLAMA_NUM_CTX = "16384";
         LD_LIBRARY_PATH = lib.concatStringsSep ":" [
           "${ollamaPkg}/lib/ollama/rocm"
           "${pkgs.rocmPackages.clr}/lib"
