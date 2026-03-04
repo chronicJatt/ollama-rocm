@@ -48,6 +48,7 @@ in
         User             = "ollama";
         Group            = "ollama";
         StateDirectory   = "ollama ollama/models";
+        StateDirectoryMode = "0755";
         WorkingDirectory = "/var/lib/ollama";
       };
     };
