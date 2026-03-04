@@ -30,7 +30,7 @@ in
     systemd.services.ollama = {
       description = "Ollama inference daemon";
       wantedBy    = [ "multi-user.target" ];
-      after       = [ "network.target" "sys-devices-virtual-dri.device" ];
+      after       = [ "network.target" ];
       requires    = [ "sys-devices-virtual-dri.device" ];
 
       environment = {
