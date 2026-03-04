@@ -47,7 +47,7 @@ in
         RestartSec       = "3s";
         User             = "ollama";
         Group            = "ollama";
-        StateDirectory   = "ollama";
+        StateDirectory   = "ollama ollama/models";
         WorkingDirectory = "/var/lib/ollama";
       };
     };
