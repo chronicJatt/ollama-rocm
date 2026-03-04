@@ -34,8 +34,9 @@ in
       requires    = [ "sys-devices-virtual-dri.device" ];
 
       environment = {
-        OLLAMA_HOST              = "${cfg.host}:${toString cfg.port}";
-        LD_LIBRARY_PATH          = "${ollamaPkg}/lib/ollama/rocm";
+        OLLAMA_HOST   = "${cfg.host}:${toString cfg.port}";
+        OLLAMA_MODELS = "/var/lib/ollama/models";
+        LD_LIBRARY_PATH = "${ollamaPkg}/lib/ollama/rocm";
       } // lib.optionalAttrs (cfg.rocmGfxOverride != "") {
         HSA_OVERRIDE_GFX_VERSION = cfg.rocmGfxOverride;
       };
