@@ -36,6 +36,22 @@ self-contained package ready for NixOS service declaration.
 
 ---
 
+## Repository Structure
+
+```
+ollama-rocm/
+├── flake.nix          # outputs: packages, overlays, nixosModules
+├── flake.lock
+├── README.md
+├── AGENTS.md
+├── pkgs/
+│   └── ollama.nix     # fetchurl derivation — two tarballs, patchelf, archMap
+└── modules/
+    └── ollama.nix     # NixOS module — systemd service, options, user/group
+```
+
+---
+
 ## Why Not Upstream This to nixpkgs?
 
 The nixpkgs maintainers are aware of the version lag and are working on it.
