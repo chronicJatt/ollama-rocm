@@ -36,10 +36,13 @@ in
       environment = {
         OLLAMA_HOST   = "${cfg.host}:${toString cfg.port}";
         OLLAMA_MODELS = "/var/lib/ollama/models";
-        LD_LIBRARY_PATH = "${ollamaPkg}/lib/ollama/rocm";
-      } // lib.optionalAttrs (cfg.rocmGfxOverride != "") {
+        LD_LIBRARY_PATH = lib.concatStringsSep ":" [
+          "${ollamaPkg}/lib/ollama/rocm"
+          "${pkgs.rocmPackages.clr}/lib"
+        ];
+      } // (if cfg.rocmGfxOverride != "" then {
         HSA_OVERRIDE_GFX_VERSION = cfg.rocmGfxOverride;
-      };
+      } else {});
 
       serviceConfig = {
         ExecStart        = "${ollamaPkg}/bin/ollama serve";
