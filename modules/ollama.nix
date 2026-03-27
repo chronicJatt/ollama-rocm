@@ -29,7 +29,6 @@ in
 
     systemd.services.ollama = {
       description = "Ollama inference daemon";
-      wantedBy    = [ "multi-user.target" ];
       after       = [ "network.target" ];
       requires    = [ "sys-devices-virtual-dri.device" ];
 
@@ -59,7 +58,6 @@ in
 
     systemd.services.ollama-load-models = lib.mkIf (cfg.loadModels != []) {
       description = "Pull configured Ollama models";
-      wantedBy    = [ "multi-user.target" ];
       after       = [ "ollama.service" ];
       requires    = [ "ollama.service" ];
       environment.OLLAMA_HOST = "http://${cfg.host}:${toString cfg.port}";
